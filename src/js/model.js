@@ -16,7 +16,7 @@ const formatIngredients = ingredients => {
     return {
       name: ingredient.originalName,
       unit: ingredient.measures.metric.unitShort,
-      amount: ingredient.amount,
+      amount: ingredient.measures.metric.amount,
     };
   });
 };
@@ -39,6 +39,7 @@ const createRecipeObject = recipe => {
 export const loadRecipe = async function (id) {
   try {
     const data = await getData(`${API_URL}${id}/information?apiKey=${API_KEY}`);
+    console.log(data);
     state.recipe = createRecipeObject(data);
     console.log(state.recipe);
   } catch (err) {
@@ -69,4 +70,15 @@ export const getSearchResultsPage = function (page = state.search.page) {
   const end = page * state.search.resultsPerPage;
 
   return state.search.results.slice(start, end);
+};
+
+export const updateServings = function (newServings) {
+  state.recipe.ingredients.forEach(ingredient => {
+    ingredient.amount =
+      Math.round(
+        ((ingredient.amount * newServings) / state.recipe.servings) * 100
+      ) / 100;
+  });
+
+  state.recipe.servings = newServings;
 };

@@ -1,6 +1,7 @@
 import View from './View';
 
 import icons from '../../img/icons.svg';
+import { Fraction } from 'fractional';
 
 class RecipeView extends View {
   _parentElement = document.querySelector('.recipe');
@@ -11,6 +12,17 @@ class RecipeView extends View {
     ['hashchange', 'load'].forEach(event =>
       window.addEventListener(event, handler)
     );
+  }
+
+  addHandlerUpdateServings(handler) {
+    this._parentElement.addEventListener('click', function (e) {
+      const btn = e.target.closest('.btn-update-servings');
+      if (!btn) return;
+
+      const newServings = +btn.dataset.update;
+
+      if (newServings > 0) handler(newServings);
+    });
   }
 
   _generateMarkup() {
@@ -46,12 +58,16 @@ class RecipeView extends View {
           }</span>
           <span class="recipe-text">servings</span>
           <div class="recipe-buttons">
-            <button class="btn-small btn-update-servings">
+            <button class="btn-small btn-update-servings" data-update=${
+              this._data.servings - 1
+            }>
               <svg class="icon">
                 <use href="${icons}#icon-minus"></use>
               </svg>
             </button>
-            <button class="btn-small btn-update-servings">
+            <button class="btn-small btn-update-servings" data-update=${
+              this._data.servings + 1
+            }>
               <svg class="icon">
                 <use href="${icons}#icon-plus"></use>
               </svg>
@@ -85,7 +101,9 @@ class RecipeView extends View {
   _generateMarkupIngredients(ing) {
     return `
       <li class="ingredient-item">
-        <div class="ingredient-quantity">${ing.amount}</div>
+        <div class="ingredient-quantity">${
+          ing.amount ? new Fraction(ing.amount) : ''
+        }</div>
         <div class="ingredient-name">
           <span class="ingredient-unit">${ing.unit}</span>
           ${ing.name}
