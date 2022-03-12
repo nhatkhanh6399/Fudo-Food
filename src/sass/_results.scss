@@ -10,10 +10,18 @@
 }
 
 .pagination {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  // display: flex;
+  // justify-content: space-between;
+  // align-items: center;
 
   margin-top: auto;
   padding: 0 3rem;
+
+  &-btn-next {
+    float: right;
+  }
+
+  &-btn-prev {
+    float: left;
+  }
 }

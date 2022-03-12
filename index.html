@@ -13,6 +13,7 @@
     <link rel="shortcut icon" href="src/img/favicon.png" type="image/x-icon" />
 
     <link rel="stylesheet" href="src/sass/main.scss" />
+    <script type="module" defer src="./src/js/controller.js"></script>
     <title>Fudo Food</title>
   </head>
   <body>
@@ -90,7 +91,7 @@
       </header>
       <aside class="search-results">
         <ul class="results">
-          <li class="preview">
+          <!-- <li class="preview">
             <a href="" class="preview-link preview-link-active">
               <div class="preview-img">
                 <img src="./src/img/test.jpeg" alt="" />
@@ -129,7 +130,7 @@
                 <p class="preview-source">Lorem ipsum dolor sit.</p>
               </div>
             </a>
-          </li>
+          </li> -->
 
           <!-- <div class="spinner">
             <div></div>
@@ -137,7 +138,7 @@
         </ul>
 
         <div class="pagination">
-          <button class="btn-inline pagination-btn-prev">
+          <!-- <button class="btn-inline pagination-btn-prev">
             <svg class="icon">
               <use href="src/img/icons.svg#icon-arrow-left"></use>
             </svg>
@@ -148,10 +149,16 @@
             <svg class="icon">
               <use href="src/img/icons.svg#icon-arrow-right"></use>
             </svg>
-          </button>
+          </button> -->
         </div>
       </aside>
       <main class="recipe">
+        <!-- <div class="message">
+          <svg class="icon">
+            <use href="src/img/icons.svg#icon-smile"></use>
+          </svg>
+          <p>Start by searching for a recipe or an ingredient. Have fun!</p>
+        </div>
         <div class="recipe-img">
           <img src="./src/img/test.jpeg" alt="" />
           <h2 class="recipe-title">Lorem ipsum dolor sit amet.</h2>
@@ -164,13 +171,13 @@
             <span class="recipe-data recipe-data-likes">21</span>
             <span class="recipe-text">likes</span>
           </div>
-          <!-- <div class="recipe-info">
+          <div class="recipe-info">
             <svg class="recipe-icon">
               <use href="src/img/icons.svg#icon-chart"></use>
             </svg>
             <span class="recipe-data recipe-data-score">12</span>
             <span class="recipe-text">Spoonacular Score</span>
-          </div> -->
+          </div> 
           <div class="recipe-info">
             <svg class="recipe-icon">
               <use href="src/img/icons.svg#icon-time"></use>
@@ -204,30 +211,14 @@
           </button>
         </div>
 
-        <div class="recipe-summary">
-          <h3 class="heading">summary</h3>
-
-          <p>
-            Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs might be a
-            good recipe to expand your main course repertoire. One portion of
-            this dish contains approximately <b>19g of protein </b>,
-            <b>20g of fat </b>, and a total of <b>584 calories </b>. For
-            <b>$1.63 per serving </b>, this recipe <b>covers 23% </b> of your
-            daily requirements of vitamins and minerals. This recipe serves 2.
-            It is brought to you by fullbellysisters.blogspot.com. 209 people
-            were glad they tried this recipe. A mixture of scallions, salt and
-            pepper, white wine, and a handful of other ingredients are all it
-            takes to make
-          </p>
-        </div>
-
         <div class="recipe-ingredients">
           <h3 class="heading">ingredients</h3>
           <ul class="ingredient-list">
             <li class="ingredient-item">
               <div class="ingredient-quantity">2</div>
               <div class="ingredient-name">
-                cup mozzarella shredded shredded shredded
+                <span class="ingredient-unit">cup</span>
+                mozzarella shredded shredded shredded
               </div>
             </li>
             <li class="ingredient-item">
@@ -244,6 +235,38 @@
             </li>
           </ul>
         </div>
+
+        <div class="recipe-summary">
+          <h3 class="heading">summary</h3>
+
+          <p>
+            Pizza bites with pumpkin might be just the hor d'oeuvre you are
+            searching for. This recipe serves 4. For <b>$1.95 per serving</b>,
+            this recipe <b>covers 22%</b> of your daily requirements of vitamins
+            and minerals. One serving contains <b>309 calories</b>,
+            <b>16g of protein</b>, and <b>22g of fat</b>. Head to the store and
+            pick up garlic, parsley, eggs, and a few other things to make it
+            today. 9 people have tried and liked this recipe. It is brought to
+            you by Foodista. It is an <b>affordable</b> recipe for fans of
+            Mediterranean food. From preparation to the plate, this recipe takes
+            approximately <b>approximately 45 minutes</b>. It is a good option
+            if you're following a
+            <b>gluten free, lacto ovo vegetarian, and primal</b> diet. All
+            things considered, we decided this recipe
+            <b>deserves a spoonacular score of 66%</b>. This score is solid. If
+            you like this recipe, you might also like recipes such as
+            <a href="https://spoonacular.com/recipes/pizza-bites-89274"
+              >Pizza Bites</a
+            >,
+            <a href="https://spoonacular.com/recipes/pizza-bites-568070"
+              >Pizza Bites</a
+            >, and
+            <a
+              href="https://spoonacular.com/recipes/zucchini-pizza-bites-540333"
+              >Zucchini Pizza Bites</a
+            >.
+          </p>
+        </div> -->
       </main>
     </div>
   </body>

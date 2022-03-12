@@ -37,6 +37,7 @@
     text-align: center;
     text-transform: uppercase;
     font-weight: 700;
+    line-height: 1.2;
     padding: 0 2rem;
     color: $color-primary;
   }
@@ -102,6 +103,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 2rem 3rem;
     list-style: none;
+    width: 100%;
   }
 
   &-item {
