@@ -1,7 +1,7 @@
 import View from './View';
 
 import icons from '../../img/icons.svg';
-import { Fraction } from 'fractional';
+import { roundTo } from 'round-to';
 
 class RecipeView extends View {
   _parentElement = document.querySelector('.recipe');
@@ -20,6 +20,7 @@ class RecipeView extends View {
       if (!btn) return;
 
       const newServings = +btn.dataset.update;
+      console.log(typeof newServings);
 
       if (newServings > 0) handler(newServings);
     });
@@ -102,7 +103,7 @@ class RecipeView extends View {
     return `
       <li class="ingredient-item">
         <div class="ingredient-quantity">${
-          ing.amount ? new Fraction(ing.amount) : ''
+          ing.amount ? roundTo(ing.amount, 2) : ''
         }</div>
         <div class="ingredient-name">
           <span class="ingredient-unit">${ing.unit}</span>

@@ -12,9 +12,9 @@
   "dependencies": {
     "core-js": "^3.21.1",
     "dotenv": "^16.0.0",
-    "fractional": "^1.0.0",
     "parcel": "^2.3.2",
-    "regenerator-runtime": "^0.13.9"
+    "regenerator-runtime": "^0.13.9",
+    "round-to": "^6.0.0"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.3.2",

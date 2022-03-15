@@ -58,6 +58,8 @@ export const loadSearchResults = async function (query) {
     state.search.results = data.results.map(recipe => {
       return { id: recipe.id, title: recipe.title, image: recipe.image };
     });
+
+    state.search.page = 1;
   } catch (err) {
     throw err;
   }
@@ -75,9 +77,10 @@ export const getSearchResultsPage = function (page = state.search.page) {
 export const updateServings = function (newServings) {
   state.recipe.ingredients.forEach(ingredient => {
     ingredient.amount =
-      Math.round(
-        ((ingredient.amount * newServings) / state.recipe.servings) * 100
-      ) / 100;
+      (ingredient.amount * newServings) / state.recipe.servings;
+    // Math.round(
+    //   ((ingredient.amount * newServings) / state.recipe.servings) * 10
+    // ) / 10;
   });
 
   state.recipe.servings = newServings;

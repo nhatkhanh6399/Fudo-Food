@@ -18,7 +18,7 @@ class ResultsView extends View {
     return `
       <li class="preview">
         <a href="#${result.id}" class="preview-link ${
-      result.id == id ? 'preview-link-active' : 'abc'
+      result.id == id ? 'preview-link-active' : ''
     }">
           <div class="preview-img">
             <img src="${result.image}" alt="${result.title}" />
