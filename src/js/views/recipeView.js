@@ -26,6 +26,15 @@ class RecipeView extends View {
     });
   }
 
+  addHandlerFavorite(handler) {
+    this._parentElement.addEventListener('click', function (e) {
+      const btn = e.target.closest('.btn-favorite');
+      if (!btn) return;
+
+      handler();
+    });
+  }
+
   _generateMarkup() {
     return `
       <div class="recipe-img">
@@ -77,7 +86,9 @@ class RecipeView extends View {
         </div>
         <button class="btn-round btn-favorite">
           <svg class="icon">
-            <use href="${icons}#icon-heart-fill"></use>
+            <use href="${icons}#icon-heart${
+      this._data.isFavorite ? '-fill' : ''
+    }"></use>
           </svg>
         </button>
       </div>

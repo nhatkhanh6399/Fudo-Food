@@ -9,6 +9,7 @@ export const state = {
     page: 1,
     resultsPerPage: RESULTS_PER_PAGE,
   },
+  favorites: [],
 };
 
 const formatIngredients = ingredients => {
@@ -39,9 +40,10 @@ const createRecipeObject = recipe => {
 export const loadRecipe = async function (id) {
   try {
     const data = await getData(`${API_URL}${id}/information?apiKey=${API_KEY}`);
-    console.log(data);
     state.recipe = createRecipeObject(data);
-    console.log(state.recipe);
+    if (state.favorites.some(fav => fav.id === +id))
+      state.recipe.isFavorite = true;
+    else state.recipe.isFavorite = false;
   } catch (err) {
     throw err;
   }
@@ -85,3 +87,31 @@ export const updateServings = function (newServings) {
 
   state.recipe.servings = newServings;
 };
+
+const persistFavorites = function () {
+  localStorage.setItem('favorites', JSON.stringify(state.favorites));
+};
+
+export const addFavorite = function (recipe) {
+  state.favorites.push(recipe);
+
+  if (recipe.id === state.recipe.id) state.recipe.isFavorite = true;
+
+  persistFavorites();
+};
+
+export const removeFavorite = function (id) {
+  const index = state.favorites.findIndex(el => el.id === id);
+  if (index > -1) state.favorites.splice(index, 1);
+
+  if (state.recipe.id === id) state.recipe.isFavorite = false;
+
+  persistFavorites();
+};
+
+const getFavorites = function () {
+  const storage = localStorage.getItem('favorites');
+
+  if (storage) state.favorites = JSON.parse(storage);
+};
+getFavorites();

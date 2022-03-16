@@ -1,16 +1,17 @@
 import View from './View';
-
-import icons from '../../img/icons.svg';
 import previewView from './previewView';
 
-class ResultsView extends View {
-  _parentElement = document.querySelector('.results');
-  _errorMessage =
-    'We could not find any recipes for your query. Please try another one!';
+class FavoritesView extends View {
+  _parentElement = document.querySelector('.favorites');
+  _errorMessage = 'No favorites yet. Find a recipe and add it to favorites ;)';
   _message = '';
 
+  addHandlerRender(handler) {
+    window.addEventListener('load', handler);
+  }
+
   _generateMarkup() {
-    return this._data.map(result => previewView.render(result, false)).join('');
+    return this._data.map(fav => previewView.render(fav, false)).join('');
   }
 
   // _generateMarkup() {
@@ -37,4 +38,4 @@ class ResultsView extends View {
   // }
 }
 
-export default new ResultsView();
+export default new FavoritesView();

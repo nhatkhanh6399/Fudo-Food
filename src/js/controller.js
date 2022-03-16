@@ -2,6 +2,7 @@ import * as model from './model';
 import recipeView from './views/recipeView';
 import searchView from './views/searchView';
 import resultsView from './views/resultsView';
+import favoritesView from './views/favoritesView';
 import paginationView from './views/paginationView';
 
 import 'core-js/stable';
@@ -15,6 +16,8 @@ const controlRecipe = async function () {
     recipeView.renderSpinner();
 
     resultsView.update(model.getSearchResultsPage());
+
+    favoritesView.update(model.state.favorites);
 
     await model.loadRecipe(id);
 
@@ -54,11 +57,26 @@ const controlServings = function (newServings) {
   recipeView.update(model.state.recipe);
 };
 
+const controlFavorite = function () {
+  if (!model.state.recipe.isFavorite) model.addFavorite(model.state.recipe);
+  else model.removeFavorite(model.state.recipe.id);
+
+  console.log(model.state.favorites);
+  recipeView.update(model.state.recipe);
+
+  favoritesView.render(model.state.favorites);
+};
+
+const controlRenderFavorites = function () {
+  favoritesView.render(model.state.favorites);
+};
+
 const init = function () {
+  favoritesView.addHandlerRender(controlRenderFavorites);
   recipeView.addHandlerRender(controlRecipe);
   recipeView.addHandlerUpdateServings(controlServings);
+  recipeView.addHandlerFavorite(controlFavorite);
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
 };
-
 init();
