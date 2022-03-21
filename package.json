@@ -1,13 +1,13 @@
 {
   "name": "fudofood",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.html",
+  "description": "Fudo Food",
+  "default": "index.html",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html --dist-dir ./dist"
   },
-  "author": "",
+  "author": "Nhat Khanh",
   "license": "ISC",
   "dependencies": {
     "core-js": "^3.21.1",
