@@ -2,7 +2,7 @@
   "name": "fudofood",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html"
@@ -11,7 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "core-js": "^3.21.1",
-    "dotenv": "^16.0.0",
     "parcel": "^2.3.2",
     "regenerator-runtime": "^0.13.9",
     "round-to": "^6.0.0"

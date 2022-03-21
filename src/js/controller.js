@@ -80,3 +80,12 @@ const init = function () {
   paginationView.addHandlerClick(controlPagination);
 };
 init();
+
+function h() {
+  setTimeout(() => console.log('1'));
+  console.log('2');
+  console.log('3');
+}
+console.log('4');
+h();
+console.log('5');
